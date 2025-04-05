@@ -2,6 +2,7 @@ import os
 import hmac
 import base64
 import hashlib
+import subprocess
 
 from io import BytesIO
 

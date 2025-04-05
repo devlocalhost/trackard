@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+
+{% block head %}
+{{ super() }}
+<script>
+    function validateForm() {
+        var username = document.getElementById("username").value;
+        var trackTitleArtist = document.getElementById("track_title_artist").value;
+
+        if (username === "" && trackTitleArtist === "") {
+            alert("Please enter either a Username or Track Title and Artist Name.");
+            return false;
+        }
+        return true;
+    }
+</script>
+{% endblock %}
+
+{% block title %}
+    index - trackard
+{% endblock %}
+
+{% block content %}
+
+    <h1 class="colored">trackard</h1>
+
+    <h2>An apple music-like card generator</h2>
+
+    <h1>Usage</h1>
+    <p>If you use last.fm or listenbrainz, simply enter your username and click "Generate". The track will be your last listened track.</p>
+    <p>If you want to generate an image for a different song, then ignore the username field, and enter the track title and artist name on the second field, and of course, click "Generate"</p>
+
+    <p>To download the image, just right click or hold your finger on the image and click "save as"</p>
+
+    <p>Click <a href="/diff">here</a> to view differences with apple music.</p>
+
+    <form action="/get" method="get" onsubmit="return validateForm()">
+    <h2>Required values</h2>
+    <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+    </div>
+
+    <div class="form-group">
+        <label>Service:</label>
+        <div class="radio-group">
+            <input
+                type="radio"
+                id="listenbrainz"
+                name="service"
+                value="listenbrainz"
+                checked
+            >
+            <label for="listenbrainz">Listenbrainz</label>
+            <input
+                type="radio"
+                id="lastfm"
+                name="service"
+                value="lastfm"
+            >
+            <label for="lastfm">LastFM</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="track_title_artist">Or track title and artist name:</label>
+        <input type="text" id="track_title_artist" name="track_title_artist">
+        <p>Please make sure you use the exact track title and artist name for the track, because you cannot search and pick which song is choosen. Backend picks the first result. Data is fetched from Spotify API.</p>
+    </div>
+
+    <hr />
+
+    <h2>Optional values</h2>
+
+    <div class="form-group">
+        <label for="cover_brightness">Cover brightness:</label>
+        <p>This controls the brightness for the tracks cover image, which will be used for the background of the card. To make it darker, enter anything lower than 1.00, or higher than to make it brigher</p>
+
+        <input
+            type="number"
+            id="cover_brightness"
+            name="cover_brightness"
+            value="1.10"
+            step="0.01"
+        >
+    </div>
+
+    <div class="form-group">
+        <label for="cover_blur_radius">Cover blur radius:</label>
+        <p>This controls the amount of blur the cover image will have</p>
+
+        <input
+            type="number"
+            id="cover_blur_radius"
+            name="cover_blur_radius"
+            value="30"
+            step="0.01"
+        >
+    </div>
+
+    <div class="form-group">
+        <label for="cover_round_radius">Cover round radius:</label>
+        <p>This value controls the rounded corners radius for the cover.</p>
+
+        <input
+            type="number"
+            id="cover_round_radius"
+            name="cover_round_radius"
+            value="30"
+            step="0.01"
+        >
+    </div>
+
+    <hr />
+
+    <div class="form-group">
+        <label for="container_transparency">Container transparency:</label>
+        <p>This controls the transparency of the container, where the track title, artist, album name and cover are placed.</p>
+
+        <input
+            type="number"
+            id="container_transparency"
+            name="container_transparency"
+            value="30"
+            step="0.01"
+        >
+    </div>
+
+    <div class="form-group">
+        <label for="container_round_radius">Container round radius:</label>
+        <p>This value controls the rounded corners radius of the container.</p>
+
+        <input
+            type="number"
+            id="container_round_radius"
+            name="container_round_radius"
+            value="45"
+            step="0.01"
+        >
+    </div>
+
+    <hr />
+
+    <p>The following values control how many characters can be displayed in the cover. This value usually doesnt need to be changed, unless there is more space available, or the characters still go outside of the container.</p>
+
+    <div class="form-group">
+        <label for="text_length_limit_title">Max length for title name:</label>
+        <input
+            type="number"
+            id="text_length_limit_title"
+            name="text_length_limit_title"
+            value="28"
+        >
+    </div>
+
+    <div class="form-group">
+        <label for="text_length_limit_artist">Max length for artist name:</label>
+        <input
+            type="number"
+            id="text_length_limit_artist"
+            name="text_length_limit_artist"
+            value="28"
+        >
+    </div>
+
+    <div class="form-group">
+        <label for="text_length_limit_album">Max length for album name:</label>
+        <input
+            type="number"
+            id="text_length_limit_album"
+            name="text_length_limit_album"
+            value="28"
+        >
+    </div>
+
+    <br>
+
+    <input type="submit" value="Generate">
+    </form>
+
+{% endblock %}

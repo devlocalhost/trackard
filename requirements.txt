@@ -1,0 +1,6 @@
+flask
+pylistenbrainz
+pillow
+requests
+gunicorn
+python-dotenv

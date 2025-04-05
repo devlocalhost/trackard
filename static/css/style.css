@@ -1,0 +1,97 @@
+body {
+    max-width: 650px;
+    margin: 40px auto;
+    padding: 0 10px;
+    font:
+        18px/1.5 -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        "Helvetica Neue",
+        Arial,
+        "Noto Sans",
+        sans-serif,
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol",
+        "Noto Color Emoji";
+    color: #c9d1d9;
+    background: #0d1117;
+}
+
+a {
+    cursor: pointer;
+    color: #7289da;
+}
+
+.colored::first-letter {
+    color: #7289da;
+}
+
+hr {
+    border: none;
+    height: 5px;
+    border-radius: 5px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: #727272;
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.2;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-size: 1.2em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.radio-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.radio-group label {
+    margin-right: 10px;
+}
+
+input[type="submit"] {
+    background-color: #7289da;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+}
+
+input[type="submit"]:hover {
+    background-color: #43b581;
+}
+
+
+input[type="text"],
+input[type="number"] {
+    background: #0d1117;
+    color: #c9d1d9;
+    border: 1px solid #444;
+}
+

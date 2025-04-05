@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}
+    image - trackard
+{% endblock %}
+
+{% block content %}
+
+    <h1 class="colored">trackard</h1>
+
+    <p>
+        To download, right click the image or hold your finger to the screen
+        and click download/save image
+    </p>
+
+    <p>Click <a href="/">here</a> to go home.</p>
+
+    <img
+        src="data:image/png;base64, {{ img_base64 }}"
+        style="display: block; margin: 0 auto; width: 80%"
+    >
+
+{% endblock %}

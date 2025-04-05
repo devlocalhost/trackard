@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block head %}
+{{ super() }}
+
+<style>
+    .image-pair {
+        width: 48%;
+        margin: 1%;
+    }
+
+    .image-container {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin: 20px 0;
+    }
+    </style>
+
+{% endblock %}
+
+{% block title %}
+    examples - trackard
+{% endblock %}
+
+{% block content %}
+    <h1 class="colored">trackard</h1>
+
+    <h2>Examples</h2>
+    <p>The first image is the trackard version. The second image is the image generated from the (android) apple music app. You can zoom in, or open image in a new tab for a closer/better look.</p>
+
+    <p>Click <a href="/">here</a> to go home.</p>
+
+    <div class="image-container">
+        <img src="static/img/ex1.png" class="image-pair">
+        <img src="static/img/ex1.webp" class="image-pair">
+    </div>
+    <hr />
+
+    <div class="image-container">
+        <img src="static/img/ex2.png" class="image-pair">
+        <img src="static/img/ex2.webp" class="image-pair">
+    </div>
+    <hr />
+
+    <div class="image-container">
+        <img src="static/img/ex3.png" class="image-pair">
+        <img src="static/img/ex3.webp" class="image-pair">
+    </div>
+    <hr />
+
+    <div class="image-container">
+        <img src="static/img/ex4.png" class="image-pair">
+        <img src="static/img/ex4.webp" class="image-pair">
+    </div>
+    <hr />
+
+    <div class="image-container">
+        <img src="static/img/ex5.png" class="image-pair">
+        <img src="static/img/ex5.webp" class="image-pair">
+    </div>
+    <hr />
+
+    <div class="image-container">
+        <img src="static/img/ex6.png" class="image-pair">
+        <img src="static/img/ex6.webp" class="image-pair">
+    </div>
+        
+{% endblock %}
+

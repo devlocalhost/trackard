@@ -8,7 +8,8 @@ from util import utils
 
 
 def main(
-    search_query,
+    search_query=None,
+    track_id=None,
     output=True,
     cover_brightness=1.10,
     cover_blur_radius=30,
@@ -20,7 +21,11 @@ def main(
     text_length_limit_album=28,
 ):
 
-    track_data = utils.get_track_data(search_query)
+    if search_query:
+        track_data = utils.get_track_data(search_query)
+        
+    else:
+        track_data = utils.get_track_data_by_id(track_id)
     
     artists_name = utils.formatted_artists(track_data["artists"])
     track_name = track_data["name"]

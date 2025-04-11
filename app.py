@@ -110,9 +110,11 @@ def diff():
 def get_image():
     username = request.args["username"]
     service = request.args["service"]
-    track_title_artist = request.args["track_title_artist"]
+    s_query = request.args["track_title_artist"]
+    spotify_track_id = request.args["spotify_track_id"]
 
     filename = None
+    search_query = None
 
     if username:
         if service == "listenbrainz":
@@ -121,11 +123,12 @@ def get_image():
         else:
             search_query = lastfm_client(username)
 
-    else:
-        search_query = track_title_artist
+    elif s_query:
+        search_query = s_query
 
     filename = trackard.main(
         search_query,
+        spotify_track_id,
         False,
         float(request.args["cover_brightness"]),
         int(request.args["cover_blur_radius"]),

@@ -6,8 +6,9 @@
     function validateForm() {
         var username = document.getElementById("username").value;
         var trackTitleArtist = document.getElementById("track_title_artist").value;
+        var spotifyTrackId = document.getElementById("spotify_track_id").value;
 
-        if (username === "" && trackTitleArtist === "") {
+        if (username === "" && trackTitleArtist === "" && spotifyTrackId === "") {
             alert("Please enter either a Username or Track Title and Artist Name.");
             return false;
         }
@@ -66,6 +67,12 @@
         <label for="track_title_artist">Or track title and artist name:</label>
         <input type="text" id="track_title_artist" name="track_title_artist">
         <p>Please make sure you use the exact track title and artist name for the track, because you cannot search and pick which song is choosen. Backend picks the first result. Data is fetched from Spotify API.</p>
+    </div>
+
+    <div class="form-group">
+        <label for="spotify_track_id">Ooooor track ID:</label>
+        <input type="text" id="spotify_track_id" name="spotify_track_id">
+        <p>Note: to get the track ID, simply copy the URL of the track, and get the random letters after "track/", and before "?". Example: "https://open.spotify.com/track/<b>2Ghp894n1laIf2w98VeAOJ</b>?si=921ba939821d4bed"</p>
     </div>
 
     <hr />

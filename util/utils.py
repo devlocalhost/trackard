@@ -124,6 +124,16 @@ def get_track_data(query):
         return data["tracks"]["items"][0]
 
 
+def get_track_data_by_id(track_id):
+    url = f"https://api.spotify.com/v1/tracks/{track_id}"
+    headers = {"Authorization": f"Bearer {get_token()}"}
+
+    response = requests.get(url, headers=headers)
+    data = response.json()
+
+    return data
+
+
 def formatted_artists(artists_data):
     artists = []
 

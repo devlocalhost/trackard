@@ -16,6 +16,7 @@ from werkzeug.middleware.proxy_fix import ProxyFix
 from dotenv import load_dotenv
 
 import trackard
+import status
 
 load_dotenv()
 
@@ -88,6 +89,11 @@ def autod():
         return "", 200
 
     return "", 403
+
+
+@app.route("/sj")
+def status_json():
+    return status.get_status("trackard")
 
 
 @app.route("/")

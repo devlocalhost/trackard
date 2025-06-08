@@ -23,17 +23,17 @@ def main(
 
     if search_query:
         track_data = utils.get_track_data(search_query)
-        
+
     else:
         track_data = utils.get_track_data_by_id(track_id)
-    
+
     artists_name = utils.formatted_artists(track_data["artists"])
     track_name = track_data["name"]
     album_name = track_data["album"]["name"]
 
     safe_track_name = utils.safe_filename(track_name)
     safe_artist_name = utils.safe_filename(artists_name)
-    
+
     filename = f"{safe_track_name}_{safe_artist_name}.png"
 
     # download cover
@@ -42,7 +42,9 @@ def main(
 
     # round its corners
     utils.custom_print("[ 2/13]                  rounding cover...", output)
-    utils.round_corners("temp/input-converted.png", "temp/input-rounded.png", radius=cover_round_radius)
+    utils.round_corners(
+        "temp/input-converted.png", "temp/input-rounded.png", radius=cover_round_radius
+    )
 
     # change brightness (will be used for the background)
     utils.custom_print("[ 3/13]       changing cover brightness...", output)
@@ -62,14 +64,15 @@ def main(
 
     # now we create the container
     utils.custom_print("[ 6/13]              creating container...", output)
-    utils.create_container(
-        "temp/container.png", 740, 960, (25, 25, 25)
-    )
+    utils.create_container("temp/container.png", 740, 960, (25, 25, 25))
 
     # and we make it transparent
     utils.custom_print("[ 7/13]    making container transparent...", output)
     utils.make_transparent(
-        "temp/container.png", (25, 25, 25), container_transparency, "temp/container-transparent.png"
+        "temp/container.png",
+        (25, 25, 25),
+        container_transparency,
+        "temp/container-transparent.png",
     )
 
     # blur the container
